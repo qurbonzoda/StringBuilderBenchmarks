@@ -26,8 +26,10 @@ public class CharArrayStringBuilder(capacity: Int) : IStringBuilder {
     override var length: Int = 0
         private set
 
-    override fun get(index: Int): Char =
-        chars.getOrElse(index) { throw IndexOutOfBoundsException("index: $index, length: $length}") }
+    override fun get(index: Int): Char {
+        require(index >= 0 && index < length)
+        return chars[index]
+    }
 
     override fun subSequence(startIndex: Int, endIndex: Int): CharSequence = substring(startIndex, endIndex)
 

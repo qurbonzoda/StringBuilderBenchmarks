@@ -14,8 +14,10 @@ public class StringStringBuilder(content: String = "") : IStringBuilder {
     override val length: Int
         get() = string.length
 
-    override fun get(index: Int): Char =
-        string.getOrElse(index) { throw IndexOutOfBoundsException("index: $index, length: $length}") }
+    override fun get(index: Int): Char {
+        require(index >= 0 && index < length)
+        return string[index]
+    }
 
     override fun subSequence(startIndex: Int, endIndex: Int): CharSequence = string.substring(startIndex, endIndex)
 

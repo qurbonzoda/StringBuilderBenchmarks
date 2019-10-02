@@ -4,12 +4,9 @@ import kotlinx.benchmark.*
 import kotlin.random.Random
 
 @State(Scope.Benchmark)
-@Measurement(iterations = 3, time = 1, timeUnit = BenchmarkTimeUnit.SECONDS)
-@OutputTimeUnit(BenchmarkTimeUnit.NANOSECONDS)
-@BenchmarkMode(Mode.AverageTime)
-class MethodImplementationBench {
+class StringMethodBench {
 
-    @Param("1", "10", "1000", "100000")
+    @Param("1", "10", "100", "1000", "10000", "100000")
     var size = 0
 
     var string = ""
@@ -62,6 +59,13 @@ class MethodImplementationBench {
         val start = Random.nextInt(size)
         val end = Random.nextInt(start, size + 1)
         return string.asDynamic().slice(0, start) + string.asDynamic().slice(end)
+    }
+
+    @Benchmark
+    fun delete_Splice(): String {
+        val start = Random.nextInt(size)
+        val end = Random.nextInt(start, size + 1)
+        return string.asDynamic().split("").splice(start, end - start).join()
     }
 
     @Benchmark

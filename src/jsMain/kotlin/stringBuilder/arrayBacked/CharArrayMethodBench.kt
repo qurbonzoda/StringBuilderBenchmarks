@@ -4,12 +4,9 @@ import kotlinx.benchmark.*
 import kotlin.random.Random
 
 @State(Scope.Benchmark)
-@Measurement(iterations = 3, time = 1, timeUnit = BenchmarkTimeUnit.SECONDS)
-@OutputTimeUnit(BenchmarkTimeUnit.NANOSECONDS)
-@BenchmarkMode(Mode.AverageTime)
-class MethodImplementationBench {
+class CharArrayMethodBench {
 
-    @Param("1", "10", "1000", "100000")
+    @Param("1", "10", "100", "1000", "10000", "100000")
     var size = 0
 
     var string = ""

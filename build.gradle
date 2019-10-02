@@ -61,12 +61,94 @@ kotlin {
 benchmark {
     configurations {
         main {
-            warmups = 10 // number of warmup iterations
-            iterations = 10 // number of iterations
-            iterationTime = 500 // time in seconds per iteration
-            iterationTimeUnit = "ms" // time unity for iterationTime, default is seconds
-
-            include("StringBuilderBench")
+            warmups = 10 
+            iterations = 10 
+            iterationTime = 500 
+            iterationTimeUnit = "ms" 
+            mode = "AverageTime"
+            outputTimeUnit = "ns"
+        }
+        
+        append {
+            warmups = 10
+            iterations = 10
+            iterationTime = 500
+            iterationTimeUnit = "ms"
+            mode = "AverageTime"
+            outputTimeUnit = "ns"
+            include("AppendBench")
+            include("AppendStringBench")
+        }
+        
+        constructor {
+            warmups = 10
+            iterations = 10
+            iterationTime = 500
+            iterationTimeUnit = "ms"
+            mode = "AverageTime"
+            outputTimeUnit = "ns"
+            include("ConstructorBench")
+        }
+        
+        delete {
+            warmups = 10
+            iterations = 10
+            iterationTime = 500
+            iterationTimeUnit = "ms"
+            mode = "AverageTime"
+            outputTimeUnit = "ns"
+            include("DeleteBench")
+        }
+        
+        getSet {
+            warmups = 10
+            iterations = 10
+            iterationTime = 500
+            iterationTimeUnit = "ms"
+            mode = "AverageTime"
+            outputTimeUnit = "ns"
+            include("GetSetBench")
+        }
+        
+        insert {
+            warmups = 10
+            iterations = 10
+            iterationTime = 500
+            iterationTimeUnit = "ms"
+            mode = "AverageTime"
+            outputTimeUnit = "ns"
+            include("InsertBench")
+            include("InsertStringBench")
+        }
+        
+        ToString {
+            warmups = 10
+            iterations = 10
+            iterationTime = 500
+            iterationTimeUnit = "ms"
+            mode = "AverageTime"
+            outputTimeUnit = "ns"
+            include("ToString")
+        }
+        
+        stringMethod {
+            warmups = 10
+            iterations = 10
+            iterationTime = 500
+            iterationTimeUnit = "ms"
+            mode = "AverageTime"
+            outputTimeUnit = "ns"
+            include("StringMethodBench")
+        }
+        
+        charArrayMethod {
+            warmups = 10 
+            iterations = 10
+            iterationTime = 500
+            iterationTimeUnit = "ms"
+            mode = "AverageTime"
+            outputTimeUnit = "ns"
+            include("CharArrayMethodBench")
         }
     }
 
