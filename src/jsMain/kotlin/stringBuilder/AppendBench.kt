@@ -6,7 +6,7 @@ import kotlin.random.Random
 @State(Scope.Benchmark)
 open class AppendBench {
 
-    @Param("0", "1")
+    @Param("0", "1", "2")
     var implementation = 0
 
     @Param("10", "100", "1000", "10000", "100000")
@@ -26,12 +26,20 @@ open class AppendBench {
         while (sb.length < size) sb.append(int++)
         return sb
     }
+
+    @Benchmark
+    fun ensureCapacityAppendChar(): IStringBuilder {
+        val sb = createEmptyStringBuilder(implementation)
+        sb.ensureCapacity(size)
+        repeat(size) { sb.append('a') }
+        return sb
+    }
 }
 
 @State(Scope.Benchmark)
 class AppendStringBench {
 
-    @Param("0", "1")
+    @Param("0", "1", "2")
     var implementation = 0
 
     @Param("10", "100", "1000", "10000", "100000")

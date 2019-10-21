@@ -7,7 +7,7 @@ import kotlin.random.nextInt
 @State(Scope.Benchmark)
 open class InsertBench {
 
-    @Param("0", "1")
+    @Param("0", "1", "2")
     var implementation = 0
 
     @Param("10", "100", "1000", "10000")
@@ -45,7 +45,7 @@ open class InsertBench {
 @State(Scope.Benchmark)
 class InsertStringBench {
 
-    @Param("0", "1")
+    @Param("0", "1", "2")
     var implementation = 0
 
     @Param("10", "100", "1000", "10000")

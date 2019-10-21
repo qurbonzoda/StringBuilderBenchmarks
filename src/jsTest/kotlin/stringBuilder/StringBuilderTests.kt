@@ -1,6 +1,7 @@
 package stringBuilder
 
 import stringBuilder.arrayBacked.CharArrayStringBuilder
+import stringBuilder.hybrid.HybridStringBuilder
 import stringBuilder.stringBacked.StringStringBuilder
 import kotlin.random.Random
 import kotlin.test.Test
@@ -8,8 +9,16 @@ import kotlin.test.assertEquals
 
 class StringBuilderTests {
 
-    private fun createStringBuilders() = listOf(StringStringBuilder(), CharArrayStringBuilder())
-    private fun createStringBuilders(string: String) = listOf(StringStringBuilder(string), CharArrayStringBuilder(string))
+    private fun createStringBuilders() = listOf(
+        StringStringBuilder(),
+        CharArrayStringBuilder(),
+        HybridStringBuilder()
+    )
+    private fun createStringBuilders(string: String) = listOf(
+        StringStringBuilder(string),
+        CharArrayStringBuilder(string),
+        HybridStringBuilder(string)
+    )
 
     @Test
     fun empty() {

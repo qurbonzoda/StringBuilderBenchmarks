@@ -6,7 +6,7 @@ import kotlin.random.Random
 @State(Scope.Benchmark)
 class DeleteBench {
 
-    @Param("0", "1")
+    @Param("0", "1", "2")
     var implementation = 0
 
     @Param("10", "100", "1000", "10000")

@@ -5,7 +5,7 @@ import kotlinx.benchmark.*
 @State(Scope.Benchmark)
 open class ToStringBench {
 
-    @Param("0", "1")
+    @Param("0", "1", "2")
     var implementation = 0
 
     @Param("10", "100", "1000")
