@@ -88,6 +88,18 @@ class StringMethodBench {
         return charArray
     }
 
+    @UseExperimental(ExperimentalStdlibApi::class)
+    @Benchmark
+    fun getChars_OneByOneFromSubstring(): CharArray {
+        val start = Random.nextInt(size)
+        val end = Random.nextInt(start, size + 1)
+        val substring = string.substring(start, end)
+        for (index in 0 until substring.length) {
+            charArray[index] = substring[index]
+        }
+        return charArray
+    }
+
     @Benchmark
     fun insertString_Plus(): String {
         val offset = Random.nextInt(size)
