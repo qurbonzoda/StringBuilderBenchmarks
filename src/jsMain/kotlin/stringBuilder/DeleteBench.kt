@@ -2,7 +2,6 @@ package stringBuilder
 
 import kotlinx.benchmark.*
 import kotlin.random.Random
-import kotlin.random.nextInt
 
 @State(Scope.Benchmark)
 class DeleteBench {
@@ -20,14 +19,14 @@ class DeleteBench {
     @Setup
     fun setup() {
         stringForDelete = String(CharArray(size) { 'a' + Random.nextInt(26) } )
-        deleteCharIndexes = IntArray(10) { Random.nextInt(0..it) }.reversedArray()
+        deleteCharIndexes = IntArray(10) { Random.nextInt(0, size - it) }
 
         deleteRanges.clear()
         var length = size
         repeat(10) {
             if (length == 0) return@repeat
             val start = Random.nextInt(length)
-            val end = Random.nextInt(start..length) // possible empty range
+            val end = (start + 10).coerceAtMost(length)
             length -= end - start
 
             deleteRanges.add(start until end)

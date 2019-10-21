@@ -3,7 +3,6 @@ package stringBuilder
 import kotlinx.benchmark.*
 import stringBuilder.stringBacked.StringStringBuilder
 import kotlin.random.Random
-import kotlin.random.nextInt
 
 @State(Scope.Benchmark)
 class GetSetBench {
@@ -18,7 +17,7 @@ class GetSetBench {
 
     private var getSetIndexes = intArrayOf()
 
-    private var charArrayForGetChars = charArrayOf()
+    private var charArrayForGetChars = CharArray(10)
 
     private val getRanges = ArrayList<IntRange>()
 
@@ -29,12 +28,10 @@ class GetSetBench {
 
         getSetIndexes = IntArray(10) { Random.nextInt(size) }
 
-        charArrayForGetChars = CharArray(size)
-
         getRanges.clear()
         repeat(10) {
             val start = Random.nextInt(size)
-            val end = Random.nextInt(start..size) // possible empty range
+            val end = (start + 10).coerceAtMost(size)
             getRanges.add(start until end)
         }
 

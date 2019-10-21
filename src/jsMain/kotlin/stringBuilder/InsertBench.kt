@@ -51,7 +51,7 @@ class InsertStringBench {
     @Param("10", "100", "1000", "10000")
     var size: Int = 0
 
-    @Param("1", "10", "1000")
+    @Param("10")
     var insertLength: Int = 0
 
     private var initialString = ""
